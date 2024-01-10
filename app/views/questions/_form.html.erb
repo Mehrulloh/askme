@@ -1,0 +1,9 @@
+<%= form_with model: question do |form| %>
+  <div class="flex flex-col gap-2 p-2 container">
+    <p><%= form.label :body, "Текст вопроса" %></p>
+    <p class="w-full"><%= form.text_area :body, rows:5, style: 'width:100%;' %></p>
+    <p><%= form.label :user_id, "User" %></p>
+    <p><%= form.text_area :user_id %></p>
+    <p><%= form.submit 'Save', class: "btn-primary bg-red-500 p-2 text-white rounded cursor-pointer"%></p>
+  </div>
+<% end  %>

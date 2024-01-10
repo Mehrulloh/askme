@@ -1,0 +1,17 @@
+<div class="bg-white flex">
+  <%= form_with model: @user do |form| %>
+    <div class="flex flex-col gap-2 p-2 container">
+
+      <p><%= form.label :name, "Ваше имя" %></p>
+      <p><%= form.text_field :name %></p>
+
+      <p><%= form.label :nickname, "Ваш никнейм" %></p>
+      <p><%= form.text_field :nickname %></p>
+
+      <p><%= form.label :email, "Ваш e-mail" %></p>
+      <p><%= form.text_field :email %></p>
+
+      <p><%= form.submit 'Зарегистрироваться', class: "btn-primary bg-red-500 p-2 text-white rounded cursor-pointer"%></p>
+    </div>
+  <% end %>
+</div>

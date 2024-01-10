@@ -11,8 +11,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-8 flex">
+  <body class="bg-black">
+    <main class="container mx-auto mt-8 p-4 overflow-y-auto">
+      <% if flash[:notice].present?%>
+        <p class="text-black bg-yellow-300 p-2 mb-2"><%= flash[:notice] %></p>
+      <%end  %>
       <%= yield %>
     </main>
   </body>

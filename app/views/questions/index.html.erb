@@ -1,10 +1,16 @@
-<div class="flex flex-col">
-  <h1 class="text-2xl mb-4">Questions</h1>
+<div class="bg-white p-2 container rounded">
+  <%= render 'form', question: @question %>
 
-  <% @questions.each do |question| %>
-<!--      <p class="mb-2"><%#= link_to "Вопрос #{question.id}", "/questions/#{question.id}" %></p>-->
-      <p class="mb-2"><%= link_to "Вопрос #{question.id}",  question_path(question) %></p>
-  <% end %>
-
-  <%= link_to "New question", new_question_path %>
+  <div class="mt-8">
+    <h1 class="text-2xl mb-4">
+        <%= @questions.count %>
+        <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+    </h1>
+  </div>
 </div>
+
+<% @questions.each do |question| %>
+  <div class="container my-4">
+    <%= render question %>
+  </div>
+<% end %>
