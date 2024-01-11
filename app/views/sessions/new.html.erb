@@ -1,3 +1,22 @@
-<div class="container">
-  <h2 class="title">Вход</h2>
+<div class="container bg-white p-2">
+  <div class="px-2">
+    <h2 class="title">Вход</h2>
+
+    <p>Введите свои email и пароль для входа на сайт</p>
+  </div>
+
+  <div>
+    <%= form_with scope: :session, url: session_path do |form| %>
+      <div class="flex flex-col gap-2 p-2 container">
+
+        <p><%= form.label :email, "Ваше имя пользователя" %></p>
+        <p><%= form.text_field :email %></p>
+
+        <p><%= form.label :password, "Ваш пароль" %></p>
+        <p><%= form.password_field :password %></p>
+
+        <p><%= form.submit 'Вход', class: "btn-primary bg-red-500 p-2 text-white rounded cursor-pointer" %></p>
+      </div>
+    <% end %>
+  </div>
 </div>
