@@ -1,11 +1,12 @@
 <div class="bg-white flex flex-col p-2">
-  <h2 class="text-2xl">Присоединяйся и спрашивай!</h2>
+  <h2 class="text-2xl">Редактирование пользователя</h2>
 
   <% if @user.errors.any? %>
     <% @user.errors.full_messages.each do |message| %>
-        <p class="text-red-500"><%= message %></p>
+      <p class="text-red-500"><%= message %></p>
     <% end %>
   <% end %>
+
   <div class="mt-4">
     <%= form_with model: @user, data: {turbo: false} do |form| %>
       <div class="flex flex-col gap-2 container">
@@ -16,8 +17,7 @@
         <p><%= form.label :nickname, "Ваш никнейм" %></p>
         <p><%= form.text_field :nickname %></p>
 
-        <p><%= form.label :email, "Ваш e-mail" %></p>
-        <p><%= form.text_field :email %></p>
+        <p>Если не хотите менять пароль - оставьте эти поля пустыми</p>
 
         <p><%= form.label :password, "Ваш пароль" %></p>
         <p><%= form.password_field :password %></p>
@@ -25,8 +25,15 @@
         <p><%= form.label :password_confirmation, "Подтверждение пароля" %></p>
         <p><%= form.password_field :password_confirmation %></p>
 
-        <p><%= form.submit 'Зарегистрироваться', class: "btn-primary bg-red-500 p-2 mt-2 text-white rounded cursor-pointer"%></p>
+        <p>
+          <%= form.submit 'Сохранить', class: "btn-primary bg-red-500 p-2 mt-2 text-white rounded cursor-pointer"%>
+          <span>или <%= link_to "вернуться", :back, class: "underline" %></span>
+        </p>
       </div>
     <% end %>
+  </div>
+
+  <div>
+    <%= button_to "Удалить профиль", user_path(@user), method: :delete, form: {data: { turbo_confirm: "Вы точно хотите удалить свой профиль?" }}, class: "nav-btn bg-red-500 text-white mt-2" %>
   </div>
 </div>

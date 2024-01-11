@@ -6,7 +6,7 @@
   </div>
 
   <div>
-    <%= form_with scope: :session, url: session_path do |form| %>
+    <%= form_with scope: :session, url: session_path, data: {turbo: false} do |form| %>
       <div class="flex flex-col gap-2 p-2 container">
 
         <p><%= form.label :email, "Ваше имя пользователя" %></p>

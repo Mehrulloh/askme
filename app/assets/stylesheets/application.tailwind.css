@@ -5,6 +5,10 @@
 
 @layer components {
   .btn-primary {
-    @apply py-1 px-1 text-sm;
+    @apply py-1 px-1 text-sm rounded;
+  }
+
+  .nav-btn {
+    @apply p-2 text-sm rounded;
   }
 }

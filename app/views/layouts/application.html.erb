@@ -13,8 +13,25 @@
 
   <body class="bg-black">
     <main class="container mx-auto mt-8 p-4 overflow-y-auto">
+      <div class="navbar flex justify-between bg-red-900 py-6 container px-2">
+        <p class="text-white"><%= link_to "Ask Me!", root_path %></p>
+        <div class="flex gap-4 text-white">
+          <% if current_user.present? %>
+            <span>
+              <%= link_to "@#{current_user.nickname}",  edit_user_path(current_user) %>
+            </span>
+
+            <%= button_to "Выйти", session_path, method: :delete  %>
+          <% else %>
+            <%= link_to "Регистрация", new_user_path, class: "text-white nav-btn bg-yellow-500"%>
+            <%= link_to "Вход", new_session_path, class: "text-white nav-btn bg-yellow-500"%>
+          <% end %>
+        </div>
+      </div>
       <% if flash[:notice].present?%>
         <p class="text-black bg-yellow-300 p-2 mb-2"><%= flash[:notice] %></p>
+      <% elsif flash[:alert].present? %>
+        <p class="text-black bg-yellow-300 p-2 mb-2"><%= flash[:alert] %></p>
       <%end  %>
       <%= yield %>
     </main>
